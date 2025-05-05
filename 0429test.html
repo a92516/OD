@@ -172,41 +172,39 @@
       <p>根據內政部2022年人口統計資料表推估，台灣將於2025年進入超高齡社會，而高齡者的社會參與、活力老化、高齡自主等議題也逐漸受到重視，如何將危機轉換為商機更將成為國人一大努力的目標。爰此，本專案將以高雄市為出發點，透過圖表數據分析高齡者的人口聚集地，並根據內政部公布之112年國人的平均壽命為80.23歲為分界點，進而提供商業、人口、行銷等分布依據。</p>
     </div>
 
-   <div class="description">
+<div class="description">
   <h3>年齡熱力圖</h3>
   <div class="nav-buttons">
-    <button onclick="showChart('chart1', '123')">65-79 歲</button>
-    <button onclick="showChart('chart2', '456')">80-100 歲</button>
+    <button onclick="showChart('chart1')">65-79 歲</button>
+    <button onclick="showChart('chart2')">80-100 歲</button>
   </div>
   <div class="chart-wrapper">
     <!-- 圖表區域 -->
     <div id="chart1" class="chart">
       <iframe src="https://plotdb.io/v/chart/37424" allowfullscreen="true"></iframe>
+      <!-- 圖表對應的文字 -->
+      <p class="chart-text">這是 65-79 歲人口分布的描述。</p>
     </div>
     <div id="chart2" class="chart" style="display: none;">
       <iframe src="https://plotdb.io/v/chart/37423" allowfullscreen="true"></iframe>
+      <!-- 圖表對應的文字 -->
+      <p class="chart-text">這是 80-100 歲人口分布的描述。</p>
     </div>
-  </div>
-  <!-- 文字框區域 -->
-  <div id="chart-description" style="margin-top: 1rem; font-size: 1.2rem; color: #34495e; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px;">
-    請選擇年齡段以顯示相關描述。
   </div>
 </div>
 
 <script>
-  function showChart(id, description) {
-    // 隱藏所有圖表
+  function showChart(id) {
+    // 隱藏所有圖表和文字
     const charts = document.querySelectorAll('.chart');
     charts.forEach(chart => {
       chart.style.display = 'none';
     });
-    // 顯示目標圖表
-    document.getElementById(id).style.display = 'block';
 
-    // 更新文字框內容
-    const descriptionBox = document.getElementById('chart-description');
-    descriptionBox.textContent = description;
+    // 顯示對應的圖表和文字
+    document.getElementById(id).style.display = 'block';
   }
+</script>
 </script>
 
     <div class="description">
