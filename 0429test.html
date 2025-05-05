@@ -206,7 +206,12 @@
     });
 
     // 顯示目標圖表
-    document.getElementById(id).style.display = 'block';
+    const targetChart = document.getElementById(id);
+    if (targetChart) {
+      targetChart.style.display = 'block';
+    } else {
+      console.error(`Chart with id ${id} not found.`);
+    }
   }
 </script>
 
