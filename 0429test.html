@@ -198,34 +198,57 @@
 </div>
 
 
-
-    <div class="description">
-      <h3>集點子計畫</h3>
-      <div class="flex-section">
-        <div class="text">
-          <p>
-  我想要透過讓 <span style="color: red;">高齡者</span> 與 <span style="color: red;">年輕人</span> 打 <span style="color: red;">麻將</span> 交流的方式來增進高齡者的 <span style="color: red;">社交</span>，並利用麻將競技來刺激高齡者的 <span style="color: red;">思考</span>，降低 <span style="color: red;">失智症</span> 的機率，一來可促進 <span style="color: red;">身心健康</span>，二來則可增進他們的 <span style="color: red;">社會參與</span>。而讓年輕人擔任 <span style="color: red;">志工</span> 與 <span style="color: red;">老人家</span> 打麻將的案例也已經有了，因此這項活動我認為是可行的。
-  <br />
-  在我的家鄉 <span style="color: red;">高雄市林園區</span> 大部分的高齡者都屬於 <span style="color: red;">行動較無不便</span>、<span style="color: red;">較健康</span> 的一群，<span style="color: red;">行動不便</span> 者比例不高，竟然林園區的老人都較為健康，若能吸引高齡者參與社區與年輕人打麻將的活動，高齡者可以對年輕人分享 <span style="color: red;">洋蔥</span>、<span style="color: red;">槺榔掃帚</span>、<span style="color: red;">林半仙</span> 等老一輩在林園廣為流傳的故事，而高齡者也可以從年輕人這裡得到年輕人想法、<span style="color: red;">潮流</span>、<span style="color: red;">新的知識</span>，且年輕人對於事實的查證也相對比高齡者還要來的正確，可以適時地杜絕 <span style="color: red;">虛假消息</span> 的傳播。
-</p>
-        <div class="image">
-          <img src="A1103210_林士軒_0401課程作業_gamma.jpg" alt="集點子計畫示意圖">
-        </div>
+<div class="description">
+  <h3>集點子計畫</h3>
+  <div class="flex-section">
+    <!-- 左邊的文字描述 -->
+    <div class="text" style="flex: 1; padding-right: 1rem;">
+      <p>
+        我想要透過讓 <span style="color: red;">高齡者</span> 與 <span style="color: red;">年輕人</span> 打 <span style="color: red;">麻將</span> 交流的方式來增進高齡者的 <span style="color: red;">社交</span>，並利用麻將競技來刺激高齡者的 <span style="color: red;">思考</span>，降低 <span style="color: red;">失智症</span> 的機率，一來可促進 <span style="color: red;">身心健康</span>，二來則可增進他們的 <span style="color: red;">社會參與</span>。而讓年輕人擔任 <span style="color: red;">志工</span> 與 <span style="color: red;">老人家</span> 打麻將的案例也已經有了，因此這項活動我認為是可行的。
+        <br />
+        在我的家鄉 <span style="color: red;">高雄市林園區</span> 大部分的高齡者都屬於 <span style="color: red;">行動較無不便</span>、<span style="color: red;">較健康</span> 的一群，<span style="color: red;">行動不便</span> 者比例不高，竟然林園區的老人都較為健康，若能吸引高齡者參與社區與年輕人打麻將的活動，高齡者可以對年輕人分享 <span style="color: red;">洋蔥</span>、<span style="color: red;">槺榔掃帚</span>、<span style="color: red;">林半仙</span> 等老一輩在林園廣為流傳的故事，而高齡者也可以從年輕人這裡得到年輕人想法、<span style="color: red;">潮流</span>、<span style="color: red;">新的知識</span>，且年輕人對於事實的查證也相對比高齡者還要來的正確，可以適時地杜絕 <span style="color: red;">虛假消息</span> 的傳播。
+      </p>
+    </div>
+    
+    <!-- 右邊的圖片切換區 -->
+    <div class="image-slider" style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+      <div style="position: relative;">
+        <!-- 圖片顯示區 -->
+        <img id="current-image" src="A1103307_曾仲平_0402課程作業.jpg" alt="集點子計畫示意圖" style="max-width: 100%; max-height: 300px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+      </div>
+      <!-- 左右切換按鈕 -->
+      <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 1rem;">
+        <button onclick="prevImage()" style="padding: 0.5rem 1rem; border: none; background-color: #f1f1f1; border-radius: 4px; cursor: pointer; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">⬅️ 上一張</button>
+        <button onclick="nextImage()" style="padding: 0.5rem 1rem; border: none; background-color: #f1f1f1; border-radius: 4px; cursor: pointer; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">下一張 ➡️</button>
       </div>
     </div>
   </div>
+</div>
+
+<script>
+  // 圖片列表
+  const images = [
+    "A1103307_曾仲平_0402課程作業.jpg",
+    "A1103307_曾仲平_0326課程作業.jpg"
+  ];
+  let currentIndex = 0;
+
+  // 切換到上一張圖片
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    document.getElementById("current-image").src = images[currentIndex];
+  }
+
+  // 切換到下一張圖片
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    document.getElementById("current-image").src = images[currentIndex];
+  }
+</script>
 
  
 
-  <script>
-    function showChart(id) {
-      const charts = document.querySelectorAll('.chart');
-      charts.forEach(chart => {
-        chart.style.display = 'none';
-      });
-      document.getElementById(id).style.display = 'block';
-    }
-  </script>
+ 
 </body>
 </html>
 
