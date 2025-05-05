@@ -9,7 +9,7 @@
       font-family: "Comic Sans MS", "Segoe UI", "Helvetica Neue", sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(to right, #fff1eb, #ace0f9);
+      background: linear-gradient(to right, #fff1eb, #ffdde1);
       color: #34495e;
     }
 
@@ -18,11 +18,11 @@
       color: white;
       padding: 2rem 1rem;
       text-align: center;
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       font-weight: bold;
       letter-spacing: 3px;
-      border-bottom: 6px dotted #f8c3c3;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-bottom: 8px dashed #f8c3c3;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     .container {
@@ -37,22 +37,22 @@
       margin: 2rem 0;
       border-left: 8px solid #ffb6b9;
       border-radius: 16px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       transition: 0.3s;
     }
 
     .description:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
     }
 
     .description h3 {
       margin-top: 0;
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: #ff6f91;
-      border-bottom: 3px dashed #f8c291;
+      border-bottom: 5px dashed #f8c291;
       display: inline-block;
-      padding-bottom: 0.4rem;
+      padding-bottom: 0.5rem;
       margin-bottom: 1rem;
     }
 
@@ -67,7 +67,7 @@
       height: 600px;
       border: none;
       border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
 
     .nav-buttons {
@@ -77,20 +77,23 @@
     }
 
     .nav-buttons button {
-      background-color: #fcd5ce;
+      background-color: #ffcbf2;
       color: #6d6875;
       border: none;
-      border-radius: 20px;
+      border-radius: 30px;
       padding: 0.7rem 1.5rem;
-      font-size: 1rem;
+      font-size: 1.2rem;
       margin: 0 1rem;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
     .nav-buttons button:hover {
       background-color: #ffb4a2;
       color: white;
+      transform: scale(1.1);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
     }
 
     .flex-section {
@@ -102,20 +105,20 @@
       background-color: #ffffff;
       padding: 2rem;
       border-radius: 16px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
 
     .flex-section img {
       max-width: 100%;
       height: auto;
       border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
       transition: 0.3s;
     }
 
     .flex-section img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     }
 
     .flex-section .text {
@@ -142,7 +145,7 @@
       background-color: #ffe5ec;
       color: #666;
       font-size: 1rem;
-      border-top: 3px dotted #ffb6b9;
+      border-top: 5px dashed #ffb6b9;
     }
 
     @media (max-width: 768px) {
@@ -156,7 +159,7 @@
         height: 400px;
       }
       .description h3 {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
       }
     }
   </style>
@@ -198,8 +201,11 @@
 
   <script>
     function showChart(id) {
-      document.getElementById('chart1').style.display = id === 'chart1' ? 'block' : 'none';
-      document.getElementById('chart2').style.display = id === 'chart2' ? 'block' : 'none';
+      const charts = document.querySelectorAll('.chart');
+      charts.forEach(chart => {
+        chart.style.display = 'none';
+      });
+      document.getElementById(id).style.display = 'block';
     }
   </script>
 </body>
