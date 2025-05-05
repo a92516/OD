@@ -9,18 +9,16 @@
       font-family: "Segoe UI", "Helvetica Neue", sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(to right, #eef2f3, #f5f7fa);
-      color: #2c3e50;
+      background-color: #f4f4f4;
     }
 
     header {
-      background: linear-gradient(to right, #2980b9, #6dd5fa);
+      background-color: #2c3e50;
       color: white;
-      padding: 1.5rem;
+      padding: 1rem;
       text-align: center;
-      font-size: 2rem;
-      letter-spacing: 3px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      font-size: 1.5rem;
+      letter-spacing: 2px;
     }
 
     .container {
@@ -31,76 +29,76 @@
 
     .description {
       background-color: #ffffff;
-      padding: 1.5rem;
-      margin: 2rem 0;
+      padding: 1rem;
+      margin: 1rem 0;
       border-left: 6px solid #3498db;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-      border-radius: 12px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .description:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-    }
-
-    .description h3 {
-      margin-top: 0;
-      font-size: 1.6rem;
-      color: #34495e;
-      border-bottom: 3px solid #f1c40f;
-      display: inline-block;
-      padding-bottom: 0.3rem;
-      margin-bottom: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      border-radius: 6px;
     }
 
     .chart {
       background: white;
       padding: 1rem;
       margin-bottom: 2rem;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-      border-radius: 12px;
-      transition: transform 0.3s ease;
-    }
-
-    .chart:hover {
-      transform: scale(1.01);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
     }
 
     iframe {
       width: 100%;
       height: 600px;
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
     }
 
     .footer {
       text-align: center;
       padding: 2rem 1rem;
-      background-color: #ecf0f1;
       color: #555;
-      font-size: 1rem;
-      border-top: 2px solid #bdc3c7;
-    }
-
-    img {
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-    }
-
-    img:hover {
-      transform: scale(1.02);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      font-size: 1.1rem;
     }
 
     @media (max-width: 768px) {
       iframe {
         height: 400px;
       }
+    }
 
-      .description h3 {
-        font-size: 1.4rem;
-      }
+    /* 切換按鈕樣式 */
+    .tab-buttons {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .tab-buttons button {
+      background-color: #ecf0f1;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .tab-buttons button.active {
+      background-color: #3498db;
+      color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
   </style>
 </head>
@@ -112,32 +110,59 @@
       <h3>內容概述</h3>
       <p>根據內政部113/8/23公布「112年簡易生命表」...（略）</p>
     </div>
-  
-    <div class="description">
-      <h3>65-79 歲</h3>
-      <p>此圖表呈現高雄市中年齡在 65 至 79 歲之間...（略）</p>
-    </div>
-    <div class="chart">
-      <iframe src="https://plotdb.io/v/chart/37424" allowfullscreen="true"></iframe>
+
+    <!-- 切換圖表區 -->
+    <div class="chart-tabs">
+      <div class="tab-buttons">
+        <button onclick="showTab('tab1')" id="btn-tab1" class="active">65–79歲</button>
+        <button onclick="showTab('tab2')" id="btn-tab2">80–100歲</button>
+      </div>
+
+      <div class="tab-content active" id="tab1">
+        <div class="description">
+          <h3>65-79 歲</h3>
+          <p>此圖表呈現高雄市中年齡在 65 至 79 歲之間的高齡人口分布，該人口主要為剛退休與身體較為健康的人口，透過圖表可知該族群主要分布於舊市區與南高雄，原民區則較少，可針對該區域做市場行銷與分析。</p>
+        </div>
+        <div class="chart">
+          <iframe src="https://plotdb.io/v/chart/37424" allowfullscreen="true"></iframe>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab2">
+        <div class="description">
+          <h3>80-100 歲</h3>
+          <p>此圖表呈現高雄市中年齡在 80 至 100 歲之間的高齡人口分布，該人口除分布於原市區外，客家族群與外省族群聚落也佔相當部分，因此在做該年齡段的商業分析時也可針對族群的不同而有所規劃。</p>
+        </div>
+        <div class="chart">
+          <iframe src="https://plotdb.io/v/chart/37423" allowfullscreen="true"></iframe>
+        </div>
+      </div>
     </div>
 
-    <div class="description">
-      <h3>80-100 歲</h3>
-      <p>此圖表呈現高雄市中年齡在 80 至 100 歲之間...（略）</p>
-    </div>
-    <div class="chart">
-      <iframe src="https://plotdb.io/v/chart/37423" allowfullscreen="true"></iframe>
-    </div>
-
+    <!-- 集點子計畫 -->
     <div class="description">
       <h3>集點子計畫</h3>
-      <img src="A1103210_林士軒_0401課程作業_gamma.jpg" alt="集點子計畫示意圖" style="max-width: 100%; height: auto; border-radius: 12px; margin-bottom: 1rem;">
+      <img src="A1103210_林士軒_0401課程作業_gamma.jpg" alt="集點子計畫示意圖" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem;">
       <p>在高雄市左營區，高齡且行動不便的長者比例較高...（略）</p>
     </div>
-
   </div>
+
   <div class="footer">高雄大學</div>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-buttons button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.getElementById(tabId).classList.add('active');
+      document.getElementById('btn-' + tabId).classList.add('active');
+    }
+  </script>
 </body>
 </html>
+
 
 
