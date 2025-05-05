@@ -6,19 +6,23 @@
   <title>高雄市高齡人口熱力圖</title>
   <style>
     body {
-      font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+      font-family: "Comic Sans MS", "Segoe UI", "Helvetica Neue", sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      background: linear-gradient(to right, #fff1eb, #ace0f9);
+      color: #34495e;
     }
 
     header {
-      background-color: #2c3e50;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
       color: white;
-      padding: 1rem;
+      padding: 2rem 1rem;
       text-align: center;
-      font-size: 1.5rem;
-      letter-spacing: 2px;
+      font-size: 2.2rem;
+      font-weight: bold;
+      letter-spacing: 3px;
+      border-bottom: 6px dotted #f8c3c3;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
     .container {
@@ -28,141 +32,179 @@
     }
 
     .description {
-      background-color: #ffffff;
-      padding: 1rem;
-      margin: 1rem 0;
-      border-left: 6px solid #3498db;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      border-radius: 6px;
+      background-color: #fff;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-left: 8px solid #ffb6b9;
+      border-radius: 16px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+      transition: 0.3s;
     }
 
-    .chart {
-      background: white;
-      padding: 1rem;
+    .description:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+    }
+
+    .description h3 {
+      margin-top: 0;
+      font-size: 1.8rem;
+      color: #ff6f91;
+      border-bottom: 3px dashed #f8c291;
+      display: inline-block;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .chart-wrapper {
+      position: relative;
+      text-align: center;
       margin-bottom: 2rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      border-radius: 8px;
     }
 
-    iframe {
+    .chart iframe {
       width: 100%;
       height: 600px;
       border: none;
-      border-radius: 6px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .nav-buttons button {
+      background-color: #fcd5ce;
+      color: #6d6875;
+      border: none;
+      border-radius: 20px;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      margin: 0 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-buttons button:hover {
+      background-color: #ffb4a2;
+      color: white;
+    }
+
+    .flex-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    }
+
+    .flex-section img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .flex-section img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .flex-section .text {
+      flex: 1 1 50%;
+    }
+
+    .flex-section .text p {
+      line-height: 1.8;
+    }
+
+    .flex-section .text span.highlight {
+      color: red;
+      font-weight: bold;
+    }
+
+    .flex-section .image {
+      flex: 1 1 40%;
+      text-align: right;
     }
 
     .footer {
       text-align: center;
       padding: 2rem 1rem;
-      color: #555;
-      font-size: 1.1rem;
+      background-color: #ffe5ec;
+      color: #666;
+      font-size: 1rem;
+      border-top: 3px dotted #ffb6b9;
     }
 
     @media (max-width: 768px) {
+      .flex-section {
+        flex-direction: column;
+      }
+      .flex-section .image {
+        text-align: center;
+      }
       iframe {
         height: 400px;
       }
-    }
-
-    /* 切換按鈕樣式 */
-    .tab-buttons {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .tab-buttons button {
-      background-color: #ecf0f1;
-      border: none;
-      padding: 10px 20px;
-      margin: 0 10px;
-      border-radius: 20px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .tab-buttons button.active {
-      background-color: #3498db;
-      color: white;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-      animation: fadeIn 0.4s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+      .description h3 {
+        font-size: 1.4rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>高雄市高齡人口熱力圖</header>
   <div class="container">
-
     <div class="description">
       <h3>內容概述</h3>
       <p>根據內政部113/8/23公布「112年簡易生命表」...（略）</p>
     </div>
 
-    <!-- 切換圖表區 -->
-    <div class="chart-tabs">
-      <div class="tab-buttons">
-        <button onclick="showTab('tab1')" id="btn-tab1" class="active">65–79歲</button>
-        <button onclick="showTab('tab2')" id="btn-tab2">80–100歲</button>
+    <div class="description">
+      <h3>年齡熱力圖</h3>
+      <div class="nav-buttons">
+        <button onclick="showChart('chart1')">65-79 歲</button>
+        <button onclick="showChart('chart2')">80-100 歲</button>
       </div>
-
-      <div class="tab-content active" id="tab1">
-        <div class="description">
-          <h3>65-79 歲</h3>
-          <p>此圖表呈現高雄市中年齡在 65 至 79 歲之間的高齡人口分布，該人口主要為剛退休與身體較為健康的人口，透過圖表可知該族群主要分布於舊市區與南高雄，原民區則較少，可針對該區域做市場行銷與分析。</p>
-        </div>
-        <div class="chart">
-          <iframe src="https://plotdb.io/v/chart/37424" allowfullscreen="true"></iframe>
-        </div>
-      </div>
-
-      <div class="tab-content" id="tab2">
-        <div class="description">
-          <h3>80-100 歲</h3>
-          <p>此圖表呈現高雄市中年齡在 80 至 100 歲之間的高齡人口分布，該人口除分布於原市區外，客家族群與外省族群聚落也佔相當部分，因此在做該年齡段的商業分析時也可針對族群的不同而有所規劃。</p>
-        </div>
-        <div class="chart">
-          <iframe src="https://plotdb.io/v/chart/37423" allowfullscreen="true"></iframe>
-        </div>
+      <div class="chart-wrapper">
+        <div id="chart1" class="chart"><iframe src="https://plotdb.io/v/chart/37424" allowfullscreen="true"></iframe></div>
+        <div id="chart2" class="chart" style="display: none;"><iframe src="https://plotdb.io/v/chart/37423" allowfullscreen="true"></iframe></div>
       </div>
     </div>
 
-    <!-- 集點子計畫 -->
     <div class="description">
       <h3>集點子計畫</h3>
-      <img src="A1103210_林士軒_0401課程作業_gamma.jpg" alt="集點子計畫示意圖" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem;">
-      <p>在高雄市左營區，高齡且行動不便的長者比例較高...（略）</p>
+      <div class="flex-section">
+        <div class="text">
+          <p>在高雄市左營區，高齡且 <span class="highlight">行動不便</span> 的長者比例較高，這些 <span class="highlight">弱勢群體</span> 需要更多的 <span class="highlight">社會支持</span> 與 <span class="highlight">便利措施</span>...（略）</p>
+        </div>
+        <div class="image">
+          <img src="A1103210_林士軒_0401課程作業_gamma.jpg" alt="集點子計畫示意圖">
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="footer">高雄大學</div>
 
   <script>
-    function showTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
-      });
-      document.querySelectorAll('.tab-buttons button').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      document.getElementById(tabId).classList.add('active');
-      document.getElementById('btn-' + tabId).classList.add('active');
+    function showChart(id) {
+      document.getElementById('chart1').style.display = id === 'chart1' ? 'block' : 'none';
+      document.getElementById('chart2').style.display = id === 'chart2' ? 'block' : 'none';
     }
   </script>
 </body>
 </html>
+
 
 
 
